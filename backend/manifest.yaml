@@ -15,15 +15,15 @@ spec:
       tier: backend
       project: expense
   template:
-  metadata:
-    labels:
-      app: backend
-      tier: backend
-      project: expense
-  spec:
-    containers:
-    - name: nginx
-      image: kavya487/backend:1.0.0 
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+        project: expense
+    spec:
+      containers:
+      - name: nginx
+        image: kavya487/backend:1.0.0 
 ---
 
 kind: Service
