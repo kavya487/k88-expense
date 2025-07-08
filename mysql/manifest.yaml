@@ -30,12 +30,11 @@ apiVersion: v1
 metadata:
   name: mysql
 spec:
-  
   selector:
-    app: backend
-    tier: backend
+    app: mysql
+    tier: mysql
     project: expense
   ports:
   - protocol: TCP
-    ports: 3306
+    port: 3306
     targetPort: 3306
