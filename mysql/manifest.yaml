@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: expense
+  name: mysql
   namespace: expense
   labels:
     app: mysql
@@ -24,3 +24,18 @@ spec:
       containers:
         - name: nginx
           image: kavya478/mysql:1.0.0
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mysql
+spec:
+  
+  selector:
+    app: backend
+    tier: backend
+    project: expense
+  ports:
+  - protocol: TCP
+    ports: 3306
+    targetPort: 3306
