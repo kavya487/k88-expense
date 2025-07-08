@@ -14,14 +14,14 @@ spec:
       app: mysql
       tier: mysql
       project: expense
-    template: 
-      metadata:
-        labels:
-          app: mysql
-          tier: mysql
-          project: expense
-        spec:
-          container:
-          - name: nginx
-            image: kavya478/mysql:1.0.0 
+  template: 
+    metadata:
+      labels:
+        app: mysql
+        tier: mysql
+        project: expense
+      spec:
+        containers:
+        - name: nginx
+          image: kavya478/mysql:1.0.0 
           
