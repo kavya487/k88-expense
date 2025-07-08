@@ -10,17 +10,18 @@ metadata:
 spec:
   replicas: 3
   selector:
-    app: mysql
-    tier: mysql
-    project: expense
-  template: 
-    metadata:
-      labels:
-        app: mysql
-        tier: mysql
-        project: expense
-      spec:
-        container:
-        - name: nginx
-          image: kavya478/mysql:1.0.0 
+    matchLabels:
+      app: mysql
+      tier: mysql
+      project: expense
+    template: 
+      metadata:
+        labels:
+          app: mysql
+          tier: mysql
+          project: expense
+        spec:
+          container:
+          - name: nginx
+            image: kavya478/mysql:1.0.0 
           
