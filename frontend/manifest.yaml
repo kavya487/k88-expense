@@ -1,35 +1,32 @@
 kind: Deployment
-apiVersion: v1
+apiVersion: apps/v1
 metadata:
   name: frontned
-  namespace: expense
   labels:
-    app: backend
-    tier: backend
+    app: frontend
+    tier: frontned
     project: expense
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
-      tier: backend
+      app: frontend
+      tier: frontend
       project: expense
   template:
-    metadata:
-      labels:
-        app: backend
-        tier: backend
-        project: expense
-    spec:
-      containers:
-      - name: nginx
-        image: kavya487/frontned:1.0.0
+  metadata: 
+    labels:
+      app: frontend
+      tier: frontend
+      project: expense
+    containers:
+    - name: nginx
+      image: kavya478/frontend:1.0.0 
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: frontend
-  namespace: expense
+  name: nginx
 spec:
   type: LoadBalancer
   selector:
@@ -38,5 +35,5 @@ spec:
     project: expense
   ports:
   - protocol: TCP
-    port: 80
+    Port: 80
     targetPort: 80

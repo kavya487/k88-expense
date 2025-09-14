@@ -1,40 +1,38 @@
-apiVersion: apps/v1
 kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: mysql
   namespace: expense
   labels:
     app: mysql
-    tier: mysql
-    project: expense
+    web: database
+
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: mysql
-      tier: mysql
-      project: expense
+      web: database
   template:
     metadata:
       labels:
         app: mysql
-        tier: mysql
-        project: expense
-    spec:  # <-- moved out of metadata
+        web: database
+    spec:
       containers:
-        - name: nginx
-          image: kavya478/mysql:1.0.0
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: mysql
-spec:
-  selector:
-    app: mysql
-    tier: mysql
-    project: expense
-  ports:
-  - protocol: TCP
-    port: 3306
-    targetPort: 3306
+      - name: mysql
+        image: kavya478/mysql
+# ---
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: nginx
+# spec:
+#   type: Loadbalancer
+#   selector:
+#     app: mysql
+#     web: database
+#   ports:
+#   - prototcol: TCP
+#     port: 80
+#     targetPort: 80
